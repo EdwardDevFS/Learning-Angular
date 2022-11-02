@@ -1,0 +1,11 @@
+// {
+//     color:  rgb(255, 203, 203);
+//     background: rgb(248, 45, 45);
+// }
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+    background: black;
+    color: #f00;
+    // --bs-nav-link-padding-x: .5em;
+    /* padding-right: 1em; */
+    /* padding-left: 0em; */
+}

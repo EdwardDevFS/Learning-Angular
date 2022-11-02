@@ -1,0 +1,21 @@
+<div class="container first">
+    <div class="row">
+      <div class="col-md-6 mt-3">
+        <app-form-new-item (newItemEvent)="AddNewCities($event)" [label] = "'ciudad'" [className]="'btn-success'"></app-form-new-item>
+      </div>
+      <div class="col-md-6 mt-3">
+        <input type="text" class="form-control"  placeholder="Filtrar..." [(ngModel)]="criteria">
+      </div>
+      <div class="col-md-8 mt-2">
+        <ul>
+          <app-ciudades *ngFor="let city of (cities | filter:criteria)" (cityClickedEvent)="onCityClicked($event)" [city]="city" [selection]="selection" ></app-ciudades>                                                     
+        </ul>
+      </div> 
+      <div class="col-md-4">
+        <div class="city" *ngIf="selection">
+          <p><strong>Tu ciudad es: {{selection}}</strong></p>
+        <app-button (click)="OnClear()" [color]="'blue'" [label]="'Dejar de seleccionar'"></app-button>
+        </div>
+      </div>
+    </div>
+  </div>

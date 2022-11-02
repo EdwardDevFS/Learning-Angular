@@ -1,13 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';    // , OnChanges, OnDestroy, OnInit, SimpleChanges
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent  {      // implements OnChanges, OnInit, OnDestroy
+export class HomeComponent implements OnInit {
 
+  constructor() { }
+
+  ngOnInit(): void {
+  }
   cities = ['Barcelona','Madrid', 'Lima'];  
   name!: string;
   selection!: string;

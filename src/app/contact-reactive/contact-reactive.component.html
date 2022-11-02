@@ -1,0 +1,32 @@
+
+<h1>Contact Form Reactive {{name}} </h1>
+<form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+    <div class="mb-4">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required formControlName="name">
+        <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']" class="alert alert-danger">Este campo es requerido</div>
+        <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['minlength']" class="alert alert-danger">Este campo requiere almenos 3 carácteres</div>
+        <!-- <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Este campo es requerido</div> -->
+    </div>
+    <div class="mb-4 form-check">
+        <label for="checkAdult" class="form-label">¿Tienes más de 18 años?</label>
+        <input type="checkbox" class="form-check-input" id="checkAdult" name="checkAdult" formControlName="checkAdult" required>
+        <!-- <div [hidden]="checkAdult.valid || checkAdult.pristine" class="alert alert-danger">Este campo es requerido</div> -->
+    </div>
+    <div class="mb-4">
+        <label for="department" class="form-label">Departamento</label>
+        <select name="department" id="department" class="form-select form-select-sm" formControlName="department" required>
+            <option selected>Selecciona una opción</option>
+            <option *ngFor="let department of departments" value="department">{{department}}</option>
+        </select>
+        <!-- <div [hidden]="department.valid || departament.pristine" class="alert alert-danger">Este campo es requerido</div>  [(ngModel)]="model.comment" #comment="ngModel"-->
+    </div>
+    <div class="mb-4">
+        <label for="name" class="form-label">Comentarios</label>
+        <textarea class="form-control" name="comment" id="comment" placeholder="Deja un comentario" rows="4" formControlName="comment" required></textarea>
+        <!-- <div [hidden]="comment.valid || comment.pristine" class="alert alert-danger">Este campo es requerido</div> -->
+    </div>
+    <div class="d-grid gap-2 col-4 float-end">
+        <button  type="submit" class="btn btn-success btn-lg" [disabled]="contactForm.invalid" >Enviar datos</button>
+    </div>
+</form>
